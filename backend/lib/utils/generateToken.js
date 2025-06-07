@@ -9,8 +9,7 @@ export const generateTokenAndSetCookie  = (userId,res) => {
     res.cookie('jwt', token, {
       httpOnly: true, // Prevents client-side JavaScript from accessing the cookie
       maxAge: 15 * 24 * 60 * 60 * 1000,
-      sameSite: "Strict", // Helps prevent CSRF attacks
-      secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
+      sameSite: "None", // Helps prevent CSRF attacks // Use secure cookies in production
     });
 
 }
