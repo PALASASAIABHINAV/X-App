@@ -11,7 +11,7 @@ export const useAuthStore = create((set) => ({
   signup: async (email, username, fullname, password) => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axios.post('http://localhost:4005/api/auth/signup', {
+      const response = await axios.post('https://x-app-backend.vercel.app/api/auth/signup', {
         email,
         username,
         fullname,
@@ -44,7 +44,7 @@ export const useAuthStore = create((set) => ({
   login:async (username, password) => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axios.post('http://localhost:4005/api/auth/login', {
+      const response = await axios.post('https://x-app-backend.vercel.app/api/auth/login', {
         username,
         password,
       },
@@ -72,7 +72,7 @@ export const useAuthStore = create((set) => ({
   logout: async () => {
     set({ isLoading: true, error: null });
     try {
-      await axios.post('http://localhost:4005/api/auth/logout', {}, {
+      await axios.post('https://x-app-backend.vercel.app/api/auth/logout', {}, {
         withCredentials: true, // Include credentials for CORS
       });
       set({ user: null, isAuthenticated: false, isLoading: false });
@@ -91,7 +91,7 @@ export const useAuthStore = create((set) => ({
   getUser: async () => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axios.get('http://localhost:4005/api/auth/me', {
+      const response = await axios.get('https://x-app-backend.vercel.app/api/auth/me', {
         withCredentials: true, // Include credentials for CORS
       });
       if (response.data) {
@@ -118,7 +118,7 @@ export const useAuthStore = create((set) => ({
   getAllUsers: async () => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axios.get('http://localhost:4005/api/users/getallusers', {
+      const response = await axios.get('https://x-app-backend.vercel.app/api/users/getallusers', {
         withCredentials: true,
       });
       if (response.data) {

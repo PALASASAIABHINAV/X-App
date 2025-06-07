@@ -12,11 +12,11 @@ export const usePostStore = create((set) => ({
   getPostEndpoint: async (feedType) => {
     switch (feedType) {
       case "forYou":
-        return "http://localhost:4005/api/posts/getall";
+        return "https://x-app-backend.vercel.app/api/posts/getall";
       case "following":
-        return "http://localhost:4005/api/posts/following";
+        return "https://x-app-backend.vercel.app/api/posts/following";
       default:
-        return "http://localhost:4005/api/posts/getall";
+        return "https://x-app-backend.vercel.app/api/posts/getall";
     }
   },
 
@@ -37,7 +37,7 @@ export const usePostStore = create((set) => ({
   deletePost: async (postId, feedType) => {
     try {
       set({ isLoading: true, error: null });
-      await axios.delete(`http://localhost:4005/api/posts/${postId}`, { withCredentials: true });
+      await axios.delete(`https://x-app-backend.vercel.app/api/posts/${postId}`, { withCredentials: true });
       usePostStore.getState().fetchPosts(feedType);
       set({ isLoading: false });
     } catch (error) {
@@ -48,7 +48,7 @@ export const usePostStore = create((set) => ({
   createPost: async ({ text, image }) => {
     try {
       set({ isLoading: true, error: null });
-      await axios.post("http://localhost:4005/api/posts/create", { text, image }, {
+      await axios.post("https://x-app-backend.vercel.app/api/posts/create", { text, image }, {
         withCredentials: true,
       });
       usePostStore.getState().fetchPosts("forYou");
@@ -61,7 +61,7 @@ export const usePostStore = create((set) => ({
 
   suggestUsers: async () => {
     try {
-      const response = await axios.get("http://localhost:4005/api/users/suggested", {
+      const response = await axios.get("https://x-app-backend.vercel.app/api/users/suggested", {
         withCredentials: true,
       });
       if (response.data) {
@@ -75,7 +75,7 @@ export const usePostStore = create((set) => ({
   followUser: async (userId) => {
     try {
       set({isLoading: true});
-      const response = await axios.post(`http://localhost:4005/api/users/follow/${userId}`,{}, {
+      const response = await axios.post(`https://x-app-backend.vercel.app/api/users/follow/${userId}`,{}, {
         withCredentials: true,
       });
       if(response.data){
@@ -91,7 +91,7 @@ export const usePostStore = create((set) => ({
     try {
       
       set({isLoading: true, error: null});
-      const response = await axios.post(`http://localhost:4005/api/posts/like/${postId}`,{}, {
+      const response = await axios.post(`https://x-app-backend.vercel.app/api/posts/like/${postId}`,{}, {
         withCredentials: true,
       });
       if(response.data){
@@ -106,7 +106,7 @@ export const usePostStore = create((set) => ({
   commentPost: async (postId, comment, feedType) => {
     try {
       set({ isLoading: true, error: null });
-      const response = await axios.post(`http://localhost:4005/api/posts/comment/${postId}`, { text:comment }, {
+      const response = await axios.post(`https://x-app-backend.vercel.app/api/posts/comment/${postId}`, { text:comment }, {
         withCredentials: true,
       }); 
       if(response.data){
@@ -125,7 +125,7 @@ export const usePostStore = create((set) => ({
   userProfile: async (username) => {
     try {
       set({ isLoading: true, error: null });
-      const response = await axios.get(`http://localhost:4005/api/users/profile/${username}`, {
+      const response = await axios.get(`https://x-app-backend.vercel.app/api/users/profile/${username}`, {
         withCredentials: true,
       });
 
@@ -145,7 +145,7 @@ export const usePostStore = create((set) => ({
     try {
       set({ isLoading: true, error: null });
 
-      const res = await axios.get(`http://localhost:4005/api/posts/user/${username}`, {
+      const res = await axios.get(`https://x-app-backend.vercel.app/api/posts/user/${username}`, {
         withCredentials: true,
       });
 
@@ -162,7 +162,7 @@ export const usePostStore = create((set) => ({
     try {
       set({ isLoading: true, error: null });
       const response = await axios.post(
-        "http://localhost:4005/api/users/update",
+        "https://x-app-backend.vercel.app/api/users/update",
         formData,
         { withCredentials: true }
       );
@@ -188,7 +188,7 @@ export const usePostStore = create((set) => ({
     try {
       set({ isLoading: true, error: null });
       const response = await axios.post(
-        "http://localhost:4005/api/users/update",
+        "https://x-app-backend.vercel.app/api/users/update",
         formData,
         { withCredentials: true }
       );

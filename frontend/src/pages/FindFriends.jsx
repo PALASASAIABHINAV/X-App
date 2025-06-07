@@ -15,7 +15,7 @@ const FindFriends = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await axios.get('http://localhost:4005/api/users/getallusers', {
+                const response = await axios.get('https://x-app-backend.vercel.app/api/users/getallusers', {
                     withCredentials: true
                 });
                 if (response.data) {

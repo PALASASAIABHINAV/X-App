@@ -9,7 +9,7 @@ export const useNotification=create((set)=>({
   getNotifications: async () => {
     try {
       set({ isLoading: true });
-      const res = await axios.get("http://localhost:4005/api/notifications", {
+      const res = await axios.get("https://x-app-backend.vercel.app/api/notifications", {
         withCredentials: true,
       });
       set({ notifications: res.data, isLoading: false });
@@ -21,7 +21,7 @@ export const useNotification=create((set)=>({
   deleteNotification:async()=>{
     try {
         set({isLoading:true});
-        const res=await axios.delete("http://localhost:4005/api/notifications",{
+        const res=await axios.delete("https://x-app-backend.vercel.app/api/notifications",{
             withCredentials:true,
         });
         set({notifications:null,isLoading:false})
@@ -33,7 +33,7 @@ export const useNotification=create((set)=>({
   deleteSingle:async(Id)=>{
     try {
         set({isLoading:true});
-        const res=await axios.delete(`http://localhost:4005/api/notifications/${Id}`,{
+        const res=await axios.delete(`https://x-app-backend.vercel.app/api/notifications/${Id}`,{
             withCredentials:true,
         });
         set({notifications:null,isLoading:false})
